@@ -47,6 +47,7 @@
             this.btnMostrar = new System.Windows.Forms.Button();
             this.btnConexion = new System.Windows.Forms.Button();
             this.labelConexion = new System.Windows.Forms.Label();
+            this.btnBorrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -76,7 +77,7 @@
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(100, 23);
             this.btnInsert.TabIndex = 3;
-            this.btnInsert.Text = "INSERT";
+            this.btnInsert.Text = "Guardar";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -212,11 +213,22 @@
             this.labelConexion.Text = "label5";
             this.labelConexion.Visible = false;
             // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Location = new System.Drawing.Point(252, 334);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(100, 23);
+            this.btnBorrar.TabIndex = 18;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1377, 553);
+            this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.labelConexion);
             this.Controls.Add(this.btnConexion);
             this.Controls.Add(this.btnMostrar);
@@ -260,6 +272,7 @@
         private System.Windows.Forms.ColumnHeader columnId;
         private System.Windows.Forms.Button btnConexion;
         private System.Windows.Forms.Label labelConexion;
+        private System.Windows.Forms.Button btnBorrar;
     }
 }
 
