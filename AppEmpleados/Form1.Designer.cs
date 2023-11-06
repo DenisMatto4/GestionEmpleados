@@ -38,13 +38,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.listViewJobs = new System.Windows.Forms.ListView();
+            this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTitulo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnMin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnMax = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.btnMostrar = new System.Windows.Forms.Button();
-            this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnConexion = new System.Windows.Forms.Button();
+            this.labelConexion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -142,6 +144,11 @@
             this.listViewJobs.View = System.Windows.Forms.View.Details;
             this.listViewJobs.SelectedIndexChanged += new System.EventHandler(this.listViewJobs_SelectedIndexChanged);
             // 
+            // columnId
+            // 
+            this.columnId.Text = "Id";
+            this.columnId.Width = 88;
+            // 
             // columnTitulo
             // 
             this.columnTitulo.Text = "Titulo";
@@ -168,6 +175,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(103, 120);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(249, 22);
@@ -183,16 +191,34 @@
             this.btnMostrar.UseVisualStyleBackColor = true;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
-            // columnId
+            // btnConexion
             // 
-            this.columnId.Text = "Id";
-            this.columnId.Width = 88;
+            this.btnConexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnConexion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnConexion.Location = new System.Drawing.Point(1323, 15);
+            this.btnConexion.Name = "btnConexion";
+            this.btnConexion.Size = new System.Drawing.Size(26, 22);
+            this.btnConexion.TabIndex = 15;
+            this.btnConexion.UseVisualStyleBackColor = false;
+            this.btnConexion.Visible = false;
+            // 
+            // labelConexion
+            // 
+            this.labelConexion.AutoSize = true;
+            this.labelConexion.Location = new System.Drawing.Point(1163, 18);
+            this.labelConexion.Name = "labelConexion";
+            this.labelConexion.Size = new System.Drawing.Size(44, 16);
+            this.labelConexion.TabIndex = 16;
+            this.labelConexion.Text = "label5";
+            this.labelConexion.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1377, 553);
+            this.Controls.Add(this.labelConexion);
+            this.Controls.Add(this.btnConexion);
             this.Controls.Add(this.btnMostrar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtID);
@@ -232,6 +258,8 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.ColumnHeader columnId;
+        private System.Windows.Forms.Button btnConexion;
+        private System.Windows.Forms.Label labelConexion;
     }
 }
 

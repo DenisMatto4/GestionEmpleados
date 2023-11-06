@@ -47,7 +47,11 @@ namespace AppEmpleados
                 btnCerrar.Enabled = true;
                 button1.Enabled = false;
                 // Do something with the connection
-                MessageBox.Show("Conexion realizada con exito!!");
+                //MessageBox.Show("Conexion realizada con exito!!");
+                btnConexion.Visible = true;
+                btnConexion.BackColor = System.Drawing.Color.Green;
+                labelConexion.Visible = true;
+                labelConexion.Text = "Conexión BDD abierta";
 
             }
             catch (SqlException error)
@@ -66,7 +70,9 @@ namespace AppEmpleados
                     connection.Close();
                     button1.Enabled = true;
                     btnCerrar.Enabled = false;
-                    MessageBox.Show("Conexion cerrada");
+                    //MessageBox.Show("Conexion cerrada");
+                    btnConexion.BackColor = System.Drawing.Color.Red;
+                    labelConexion.Text = "Conexión BDD Cerrada";
                 }
             }
             catch (SqlException ex)
@@ -82,13 +88,25 @@ namespace AppEmpleados
             string query = $"INSERT INTO JOBS (job_title,min_salary,max_salary) VALUES (@Value1, @Value2, @Value3); SELECT SCOPE_IDENTITY();";
             if (abierto)
             {
-                decimal minimo = decimal.TryParse(txtMinimo.Text, out minimo) ? minimo : 0;
-                decimal maximo = decimal.TryParse(txtMaximo.Text, out maximo) ? maximo : 0;
+
+                //decimal minimo = decimal.TryParse(txtMinimo.Text, out minimo) ? minimo : 0;
+                decimal temp;
+                decimal? minimo = decimal.TryParse(txtMinimo.Text, out temp) ? temp : (decimal?)null;
+                decimal? maximo = decimal.TryParse(txtMaximo.Text, out temp) ? temp : (decimal?)null;
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Value1", txtTitulo.Text);
-                command.Parameters.AddWithValue("@Value2", minimo);
-                command.Parameters.AddWithValue("@Value3", maximo);
+
+                if(minimo == null)
+                    command.Parameters.AddWithValue("@Value2", DBNull.Value);
+                else
+                    command.Parameters.AddWithValue("@Value2", minimo);
+
+                if(maximo == null)
+                    command.Parameters.AddWithValue("@Value3", DBNull.Value);
+                else
+                    command.Parameters.AddWithValue("@Value3", maximo);
+
 
                 object lastid = command.ExecuteScalar();
                 int id = Convert.ToInt32(lastid);
@@ -99,6 +117,8 @@ namespace AppEmpleados
 
         private void SelectJobs()
         {
+            listaJObs.Clear();
+
             if (abierto)
             {
                 string query = $"SELECT job_id,job_title,min_salary,max_salary FROM jobs;";
@@ -111,8 +131,8 @@ namespace AppEmpleados
                     {
                         int id = reader.GetInt32(0);
                         string titulo = reader.GetString(1);
-                        decimal min = reader.GetDecimal(2);
-                        decimal max = reader.GetDecimal(3);
+                        decimal? min = reader.IsDBNull(2) ? (decimal?)null : reader.GetDecimal(2);
+                        decimal? max = reader.IsDBNull(3) ? (decimal?)null : reader.GetDecimal(3);
 
                         listaJObs.Add(new Job(id, titulo, min, max));
                     }
@@ -150,6 +170,7 @@ namespace AppEmpleados
         }
         private void RellenarListaJobs()
         {
+            listViewJobs.Items.Clear();
             foreach (var jobs in listaJObs)
             {
                 string[] data = { jobs.ID.ToString(),jobs.Titulo, jobs.Min.ToString(), jobs.Max.ToString() };
@@ -160,6 +181,11 @@ namespace AppEmpleados
 
         private void listViewJobs_SelectedIndexChanged(object sender, EventArgs e)
         {
+            RellenarInfoPantalla();
+        }
+
+        private void RellenarInfoPantalla()
+        {
             // Verificar que haya un elemento seleccionado
             if (listViewJobs.SelectedItems.Count > 0)
             {
@@ -169,10 +195,9 @@ namespace AppEmpleados
                 txtID.Text = item.SubItems[0].Text;
                 txtTitulo.Text = item.SubItems[1].Text;
                 txtMinimo.Text = item.SubItems[2].Text;
-                txtMaximo.Text =  item.SubItems[3].Text;
-
-                
+                txtMaximo.Text = item.SubItems[3].Text;
             }
         }
+
     }
 }

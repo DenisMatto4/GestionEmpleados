@@ -10,19 +10,19 @@ namespace AppEmpleados
     {
         int id;
         string titulo;
-        decimal min;
-        decimal max;
+        decimal? min;
+        decimal? max;
 
         public int ID { get => id; set => id = value; }
         public string Titulo { get => titulo; set => titulo = value; }
 
-        public decimal Min { get => min; set => min = value; }
+        public decimal? Min { get => min; set => min = value; }
 
-        public decimal Max { get => max; set => max = value; }
+        public decimal? Max { get => max; set => max = value; }
 
         public Job() { }    
 
-        public Job(int id, string titulo, decimal min, decimal max)
+        public Job(int id, string titulo, decimal? min, decimal? max)
         {
             this.id = id;
             this.titulo = titulo;
