@@ -274,15 +274,14 @@ namespace AppEmpleados
             jobSelected.Max = decimal.TryParse(txtMaximo.Text, out temp) ? temp : (decimal?)null;
 
             string query = $"DELETE FROM jobs WHERE job_id = @ID;";
-            if (abierto)
-            {
 
-                SqlCommand command = new SqlCommand(query, connection);
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
 
                 // Crear los parámetros SQL
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                new SqlParameter("@ID", SqlDbType.Int) { Value = jobSelected.ID }
+            new SqlParameter("@ID", SqlDbType.Int) { Value = jobSelected.ID }
                 };
 
                 command.Parameters.AddRange(parameters);
@@ -290,6 +289,7 @@ namespace AppEmpleados
                 MessageBox.Show("Se ha borrado correctamente!");
                 RefrescarListView();
             }
+            
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
