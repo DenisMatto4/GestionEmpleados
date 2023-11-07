@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AppEmpleados
 {
@@ -25,29 +26,8 @@ namespace AppEmpleados
         {
             // TODO: esta línea de código carga datos en la tabla 'dtEmployees.employees' Puede moverla o quitarla según sea necesario.
             this.employeesTableAdapter.Fill(this.dtEmployees.employees);
-            // TODO: esta línea de código carga datos en la tabla 'dtEmployees.employees' Puede moverla o quitarla según sea necesario.
-            this.employeesTableAdapter.Fill(this.dtEmployees.employees);
 
         }
-
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.employeesTableAdapter.FillBy(this.dtEmployees.employees);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-           
-        }
-
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -75,6 +55,18 @@ namespace AppEmpleados
             empleado.salary = 100;
             empleado.first_name = "Denis";
             dc.SubmitChanges();
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            this.dtEmployees.employees.DefaultView.RowFilter = $"first_name LIKE '{txtNombre.Text}%'";
+            dataGridViewEmployees.DataSource = this.dtEmployees.employees;
+        }
+
+        private void txtApellidos_TextChanged(object sender, EventArgs e)
+        {
+            this.dtEmployees.employees.DefaultView.RowFilter = $"last_name LIKE '{txtApellidos.Text}%'";
+            dataGridViewEmployees.DataSource = this.dtEmployees.employees;
         }
     }
 }

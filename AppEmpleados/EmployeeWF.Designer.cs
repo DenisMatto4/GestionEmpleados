@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtApellidos = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -40,8 +40,6 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dtEmployees = new AppEmpleados.dtEmployees();
-            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeesTableAdapter = new AppEmpleados.dtEmployeesTableAdapters.employeesTableAdapter();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
             this.employeeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,12 +51,14 @@
             this.salaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fKemployeesmanag3E52440BBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtEmployeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBoxEmployees = new System.Windows.Forms.ListBox();
+            this.employeesTableAdapter = new AppEmpleados.dtEmployeesTableAdapters.employeesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployees)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKemployeesmanag3E52440BBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEmployeesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -76,13 +76,15 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(221, 22);
             this.txtNombre.TabIndex = 2;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
-            // textBox2
+            // txtApellidos
             // 
-            this.textBox2.Location = new System.Drawing.Point(325, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(221, 22);
-            this.textBox2.TabIndex = 4;
+            this.txtApellidos.Location = new System.Drawing.Point(325, 76);
+            this.txtApellidos.Name = "txtApellidos";
+            this.txtApellidos.Size = new System.Drawing.Size(221, 22);
+            this.txtApellidos.TabIndex = 4;
+            this.txtApellidos.TextChanged += new System.EventHandler(this.txtApellidos_TextChanged);
             // 
             // label2
             // 
@@ -127,7 +129,6 @@
             this.btnFiltrar.TabIndex = 9;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // btnLimpiar
             // 
@@ -153,15 +154,6 @@
             this.dtEmployees.DataSetName = "dtEmployees";
             this.dtEmployees.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataMember = "employees";
-            this.employeesBindingSource.DataSource = this.dtEmployees;
-            // 
-            // employeesTableAdapter
-            // 
-            this.employeesTableAdapter.ClearBeforeFill = true;
-            // 
             // dataGridViewEmployees
             // 
             this.dataGridViewEmployees.AllowUserToAddRows = false;
@@ -179,13 +171,13 @@
             this.salaryDataGridViewTextBoxColumn,
             this.manageridDataGridViewTextBoxColumn,
             this.departmentidDataGridViewTextBoxColumn});
-            this.dataGridViewEmployees.DataSource = this.fKemployeesmanag3E52440BBindingSource;
+            this.dataGridViewEmployees.DataSource = this.employeesBindingSource;
             this.dataGridViewEmployees.Location = new System.Drawing.Point(70, 140);
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowHeadersWidth = 51;
             this.dataGridViewEmployees.RowTemplate.Height = 24;
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(1438, 142);
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(1438, 245);
             this.dataGridViewEmployees.TabIndex = 14;
             // 
             // employeeidDataGridViewTextBoxColumn
@@ -278,10 +270,15 @@
             this.departmentidDataGridViewTextBoxColumn.ReadOnly = true;
             this.departmentidDataGridViewTextBoxColumn.Width = 125;
             // 
-            // fKemployeesmanag3E52440BBindingSource
+            // employeesBindingSource
             // 
-            this.fKemployeesmanag3E52440BBindingSource.DataMember = "FK__employees__manag__3E52440B";
-            this.fKemployeesmanag3E52440BBindingSource.DataSource = this.employeesBindingSource;
+            this.employeesBindingSource.DataMember = "employees";
+            this.employeesBindingSource.DataSource = this.dtEmployeesBindingSource;
+            // 
+            // dtEmployeesBindingSource
+            // 
+            this.dtEmployeesBindingSource.DataSource = this.dtEmployees;
+            this.dtEmployeesBindingSource.Position = 0;
             // 
             // listBoxEmployees
             // 
@@ -291,6 +288,10 @@
             this.listBoxEmployees.Name = "listBoxEmployees";
             this.listBoxEmployees.Size = new System.Drawing.Size(787, 84);
             this.listBoxEmployees.TabIndex = 15;
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
             // 
             // EmployeeWF
             // 
@@ -305,7 +306,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtApellidos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
@@ -313,9 +314,9 @@
             this.Text = "EmployeeWF";
             this.Load += new System.EventHandler(this.EmployeeWF_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployees)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKemployeesmanag3E52440BBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEmployeesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,7 +325,7 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -333,9 +334,11 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label label3;
         private dtEmployees dtEmployees;
+        private System.Windows.Forms.DataGridView dataGridViewEmployees;
+        private System.Windows.Forms.ListBox listBoxEmployees;
+        private System.Windows.Forms.BindingSource dtEmployeesBindingSource;
         private System.Windows.Forms.BindingSource employeesBindingSource;
         private dtEmployeesTableAdapters.employeesTableAdapter employeesTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridViewEmployees;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn;
@@ -346,7 +349,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn manageridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource fKemployeesmanag3E52440BBindingSource;
-        private System.Windows.Forms.ListBox listBoxEmployees;
     }
 }
