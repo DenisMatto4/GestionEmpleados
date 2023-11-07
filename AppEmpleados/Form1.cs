@@ -28,12 +28,37 @@ namespace AppEmpleados
         {
             abrirConexionBDD();
             RefrescarListView();
+            MejorasInterfaz();
         }
         private void abrirConexionBDD()
         {
             string connectionString = "Data Source=79.143.90.12,54321;Initial Catalog=DenisMattoEmployees;User ID=sa;Password=123456789";
             connection = new SqlConnection(connectionString);
             connection.Open();
+        }
+        private void MejorasInterfaz()
+        {
+            // Establece la paleta de colores
+            this.BackColor = Color.LightGray; // Cambia el color de fondo a gris claro
+
+            // Cambia los colores de los botones
+            btnInsert.BackColor = Color.LightGreen; // Cambia el color de fondo del botón Guardar a verde claro
+            btnBorrar.BackColor = Color.IndianRed; // Cambia el color de fondo del botón Borrar a rojo indio
+
+            // Cambia el color de las filas alternas
+            for (int i = 0; i < listViewJobs.Items.Count; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    listViewJobs.Items[i].BackColor = Color.LightBlue;
+                }
+                else
+                {
+                    listViewJobs.Items[i].BackColor = Color.White;
+                }
+            }
+            // Cambia el tamaño de la fuente
+            listViewJobs.Font = new Font("Microsoft Sans Serif", 10);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,7 +130,7 @@ namespace AppEmpleados
                 int id = Convert.ToInt32(lastid);
                 txtID.Text = id.ToString();
 
-                MessageBox.Show("Insert correcto!");
+                MessageBox.Show("Se ha guardado correctamente!","Nuevo trabajo.",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 RefrescarListView();
             }               
         }
@@ -218,6 +243,16 @@ namespace AppEmpleados
                     jobSelected = job;           
         }
 
+        private void reiniciarInfo()
+        {
+            txtID.Text = String.Empty;
+            txtTitulo.Text = String.Empty;
+            txtMinimo.Text = String.Empty;
+            txtMaximo.Text = String.Empty;
+
+            jobSelected = null;
+        }
+
         private void UpdateJob()
         {
             try
@@ -243,7 +278,7 @@ namespace AppEmpleados
 
                     command.Parameters.AddRange(parameters);
                     command.ExecuteScalar();
-                    MessageBox.Show("Update correcto!");
+                    MessageBox.Show("Se ha actualizado correctamente!","Actualización del trabajo.",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     RefrescarListView();
                 }
             }
@@ -258,7 +293,7 @@ namespace AppEmpleados
         {
             try
             {
-                DialogResult dialogResult = MessageBox.Show("¿Estás seguro de que quieres eliminar este JOB?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show($"¿Estás seguro de que quieres borrar este JOB ({jobSelected.Titulo})?", "Confirmar eliminación", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Delete();
@@ -294,8 +329,11 @@ namespace AppEmpleados
 
                 command.Parameters.AddRange(parameters);
                 command.ExecuteScalar();
-                MessageBox.Show("Se ha borrado correctamente!");
+
+                MessageBox.Show("Se ha borrado correctamente!","Borrando el trabajo seleccionado.",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
                 RefrescarListView();
+                reiniciarInfo();
             }
             
         }
@@ -303,6 +341,11 @@ namespace AppEmpleados
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             DeleteJob();
+        }
+
+        private void btnVaciar_Click(object sender, EventArgs e)
+        {
+            reiniciarInfo();
         }
     }
 }
