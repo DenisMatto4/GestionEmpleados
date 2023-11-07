@@ -55,10 +55,15 @@
             this.dtEmployeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBoxEmployees = new System.Windows.Forms.ListBox();
             this.employeesTableAdapter = new AppEmpleados.dtEmployeesTableAdapters.employeesTableAdapter();
+            this.dtLocations = new AppEmpleados.dtLocations();
+            this.locationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.locationsTableAdapter = new AppEmpleados.dtLocationsTableAdapters.locationsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployeesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtLocations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -106,11 +111,14 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.locationsBindingSource;
+            this.comboBox1.DisplayMember = "city";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(584, 74);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(221, 24);
             this.comboBox1.TabIndex = 7;
+            this.comboBox1.ValueMember = "location_id";
             // 
             // label5
             // 
@@ -293,6 +301,20 @@
             // 
             this.employeesTableAdapter.ClearBeforeFill = true;
             // 
+            // dtLocations
+            // 
+            this.dtLocations.DataSetName = "dtLocations";
+            this.dtLocations.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // locationsBindingSource
+            // 
+            this.locationsBindingSource.DataMember = "locations";
+            this.locationsBindingSource.DataSource = this.dtLocations;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
+            // 
             // EmployeeWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -317,6 +339,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployeesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtLocations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,5 +373,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn manageridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentidDataGridViewTextBoxColumn;
+        private dtLocations dtLocations;
+        private System.Windows.Forms.BindingSource locationsBindingSource;
+        private dtLocationsTableAdapters.locationsTableAdapter locationsTableAdapter;
     }
 }

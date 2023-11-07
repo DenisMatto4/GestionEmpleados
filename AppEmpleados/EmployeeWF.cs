@@ -24,6 +24,8 @@ namespace AppEmpleados
 
         private void EmployeeWF_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dtLocations.locations' Puede moverla o quitarla según sea necesario.
+            this.locationsTableAdapter.Fill(this.dtLocations.locations);
             // TODO: esta línea de código carga datos en la tabla 'dtEmployees.employees' Puede moverla o quitarla según sea necesario.
             this.employeesTableAdapter.Fill(this.dtEmployees.employees);
 

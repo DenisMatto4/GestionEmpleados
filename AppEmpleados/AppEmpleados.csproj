@@ -62,6 +62,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtJobs.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dtLocations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtLocations.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeWF.cs">
       <SubType>Form</SubType>
@@ -123,6 +128,17 @@
     </None>
     <None Include="dtJobs.xss">
       <DependentUpon>dtJobs.xsd</DependentUpon>
+    </None>
+    <None Include="dtLocations.xsc">
+      <DependentUpon>dtLocations.xsd</DependentUpon>
+    </None>
+    <None Include="dtLocations.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtLocations.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dtLocations.xss">
+      <DependentUpon>dtLocations.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
