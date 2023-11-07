@@ -19,6 +19,7 @@ namespace AppEmpleados
         bool abierto = false;
         List<Job> listaJObs = new List<Job>();
         Job jobSelected = null;
+        
         public Form1()
         {
             InitializeComponent();
