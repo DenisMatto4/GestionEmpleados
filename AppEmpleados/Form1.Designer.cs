@@ -48,34 +48,40 @@
             this.btnConexion = new System.Windows.Forms.Button();
             this.labelConexion = new System.Windows.Forms.Label();
             this.btnBorrar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(96, 41);
+            this.button1.Location = new System.Drawing.Point(72, 33);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(56, 19);
             this.button1.TabIndex = 1;
             this.button1.Text = "Abrir";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnCerrar
             // 
             this.btnCerrar.Enabled = false;
-            this.btnCerrar.Location = new System.Drawing.Point(187, 41);
+            this.btnCerrar.Location = new System.Drawing.Point(140, 33);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.Size = new System.Drawing.Size(56, 19);
             this.btnCerrar.TabIndex = 2;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Visible = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(103, 334);
+            this.btnInsert.Location = new System.Drawing.Point(77, 271);
+            this.btnInsert.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(100, 23);
+            this.btnInsert.Size = new System.Drawing.Size(75, 19);
             this.btnInsert.TabIndex = 3;
             this.btnInsert.Text = "Guardar";
             this.btnInsert.UseVisualStyleBackColor = true;
@@ -83,49 +89,55 @@
             // 
             // txtTitulo
             // 
-            this.txtTitulo.Location = new System.Drawing.Point(103, 177);
+            this.txtTitulo.Location = new System.Drawing.Point(77, 144);
+            this.txtTitulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(249, 22);
+            this.txtTitulo.Size = new System.Drawing.Size(188, 20);
             this.txtTitulo.TabIndex = 4;
             // 
             // txtMaximo
             // 
-            this.txtMaximo.Location = new System.Drawing.Point(103, 295);
+            this.txtMaximo.Location = new System.Drawing.Point(77, 240);
+            this.txtMaximo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMaximo.Name = "txtMaximo";
-            this.txtMaximo.Size = new System.Drawing.Size(249, 22);
+            this.txtMaximo.Size = new System.Drawing.Size(188, 20);
             this.txtMaximo.TabIndex = 5;
             // 
             // txtMinimo
             // 
-            this.txtMinimo.Location = new System.Drawing.Point(103, 241);
+            this.txtMinimo.Location = new System.Drawing.Point(77, 196);
+            this.txtMinimo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMinimo.Name = "txtMinimo";
-            this.txtMinimo.Size = new System.Drawing.Size(249, 22);
+            this.txtMinimo.Size = new System.Drawing.Size(188, 20);
             this.txtMinimo.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(100, 158);
+            this.label1.Location = new System.Drawing.Point(75, 128);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Titulo";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 222);
+            this.label2.Location = new System.Drawing.Point(75, 180);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 16);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Salario minimo";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 276);
+            this.label3.Location = new System.Drawing.Point(75, 224);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 16);
+            this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Salario maximo";
             // 
@@ -137,9 +149,10 @@
             this.columnMin,
             this.columnMax});
             this.listViewJobs.HideSelection = false;
-            this.listViewJobs.Location = new System.Drawing.Point(435, 120);
+            this.listViewJobs.Location = new System.Drawing.Point(326, 98);
+            this.listViewJobs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewJobs.Name = "listViewJobs";
-            this.listViewJobs.Size = new System.Drawing.Size(914, 316);
+            this.listViewJobs.Size = new System.Drawing.Size(686, 258);
             this.listViewJobs.TabIndex = 10;
             this.listViewJobs.UseCompatibleStateImageBehavior = false;
             this.listViewJobs.View = System.Windows.Forms.View.Details;
@@ -168,37 +181,42 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(100, 101);
+            this.label4.Location = new System.Drawing.Point(75, 82);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 16);
+            this.label4.Size = new System.Drawing.Size(18, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "ID";
             // 
             // txtID
             // 
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(103, 120);
+            this.txtID.Location = new System.Drawing.Point(77, 98);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(249, 22);
+            this.txtID.Size = new System.Drawing.Size(188, 20);
             this.txtID.TabIndex = 11;
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(435, 91);
+            this.btnMostrar.Location = new System.Drawing.Point(504, 76);
+            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(141, 23);
+            this.btnMostrar.Size = new System.Drawing.Size(106, 19);
             this.btnMostrar.TabIndex = 14;
             this.btnMostrar.Text = "Mostrar Jobs";
             this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Visible = false;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // btnConexion
             // 
             this.btnConexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnConexion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnConexion.Location = new System.Drawing.Point(1323, 15);
+            this.btnConexion.Location = new System.Drawing.Point(992, 12);
+            this.btnConexion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConexion.Name = "btnConexion";
-            this.btnConexion.Size = new System.Drawing.Size(26, 22);
+            this.btnConexion.Size = new System.Drawing.Size(20, 18);
             this.btnConexion.TabIndex = 15;
             this.btnConexion.UseVisualStyleBackColor = false;
             this.btnConexion.Visible = false;
@@ -206,28 +224,40 @@
             // labelConexion
             // 
             this.labelConexion.AutoSize = true;
-            this.labelConexion.Location = new System.Drawing.Point(1163, 18);
+            this.labelConexion.Location = new System.Drawing.Point(872, 15);
+            this.labelConexion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelConexion.Name = "labelConexion";
-            this.labelConexion.Size = new System.Drawing.Size(44, 16);
+            this.labelConexion.Size = new System.Drawing.Size(35, 13);
             this.labelConexion.TabIndex = 16;
             this.labelConexion.Text = "label5";
             this.labelConexion.Visible = false;
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(252, 334);
+            this.btnBorrar.Location = new System.Drawing.Point(189, 271);
+            this.btnBorrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(100, 23);
+            this.btnBorrar.Size = new System.Drawing.Size(75, 19);
             this.btnBorrar.TabIndex = 18;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(326, 76);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Lista de trabajos";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1377, 553);
+            this.ClientSize = new System.Drawing.Size(1033, 449);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.labelConexion);
             this.Controls.Add(this.btnConexion);
@@ -244,6 +274,7 @@
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -273,6 +304,7 @@
         private System.Windows.Forms.Button btnConexion;
         private System.Windows.Forms.Label labelConexion;
         private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.Label label5;
     }
 }
 

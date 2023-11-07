@@ -26,7 +26,14 @@ namespace AppEmpleados
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            abrirConexionBDD();
+            RefrescarListView();
+        }
+        private void abrirConexionBDD()
+        {
+            string connectionString = "Data Source=79.143.90.12,54321;Initial Catalog=DenisMattoEmployees;User ID=sa;Password=123456789";
+            connection = new SqlConnection(connectionString);
+            connection.Open();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -77,15 +84,13 @@ namespace AppEmpleados
         private void InsertJob()
         {
             string query = $"INSERT INTO JOBS (job_title,min_salary,max_salary) VALUES (@Titulo, @Min, @Max); SELECT SCOPE_IDENTITY();";
-            if (abierto)
-            {
 
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
                 //decimal minimo = decimal.TryParse(txtMinimo.Text, out minimo) ? minimo : 0;
                 decimal temp;
                 decimal? minimo = decimal.TryParse(txtMinimo.Text, out temp) ? temp : (decimal?)null;
                 decimal? maximo = decimal.TryParse(txtMaximo.Text, out temp) ? temp : (decimal?)null;
-
-                SqlCommand command = new SqlCommand(query, connection);
 
                 // Crear los parámetros SQL
                 SqlParameter[] parameters = new SqlParameter[]
@@ -102,19 +107,18 @@ namespace AppEmpleados
 
                 MessageBox.Show("Insert correcto!");
                 RefrescarListView();
-            }
+            }               
         }
 
         private void SelectJobs()
         {
             listaJObs.Clear();
 
-            if (abierto)
+            string query = $"SELECT job_id,job_title,min_salary,max_salary FROM jobs;";
+
+
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = $"SELECT job_id,job_title,min_salary,max_salary FROM jobs;";
-
-                SqlCommand command = new SqlCommand(query, connection);
-
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -126,9 +130,8 @@ namespace AppEmpleados
 
                         listaJObs.Add(new Job(id, titulo, min, max));
                     }
-                }
-            }
-            
+                }                                
+            }                         
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -163,8 +166,16 @@ namespace AppEmpleados
 
         private void RefrescarListView()
         {
-            SelectJobs();
-            RellenarListaJobs();
+            try
+            {
+                SelectJobs();
+                RellenarListaJobs();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }           
         }
         private void RellenarListaJobs()
         {
@@ -218,11 +229,9 @@ namespace AppEmpleados
 
 
                 string query = $"UPDATE jobs SET job_title = @Titulo,min_salary = @Min, max_salary = @Max WHERE job_id = @Id;";
-                if (abierto)
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-
-                    SqlCommand command = new SqlCommand(query, connection);
-
                     // Crear los parámetros SQL
                     SqlParameter[] parameters = new SqlParameter[]
                     {
@@ -236,7 +245,6 @@ namespace AppEmpleados
                     command.ExecuteScalar();
                     MessageBox.Show("Update correcto!");
                     RefrescarListView();
-
                 }
             }
             catch (SqlException ex)
@@ -281,7 +289,7 @@ namespace AppEmpleados
                 // Crear los parámetros SQL
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-            new SqlParameter("@ID", SqlDbType.Int) { Value = jobSelected.ID }
+                    new SqlParameter("@ID", SqlDbType.Int) { Value = jobSelected.ID }
                 };
 
                 command.Parameters.AddRange(parameters);
