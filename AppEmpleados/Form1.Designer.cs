@@ -84,7 +84,7 @@
             this.btnInsert.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 27);
-            this.btnInsert.TabIndex = 3;
+            this.btnInsert.TabIndex = 4;
             this.btnInsert.Text = "Guardar";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
@@ -95,7 +95,7 @@
             this.txtTitulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(188, 20);
-            this.txtTitulo.TabIndex = 4;
+            this.txtTitulo.TabIndex = 1;
             // 
             // txtMaximo
             // 
@@ -103,7 +103,7 @@
             this.txtMaximo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMaximo.Name = "txtMaximo";
             this.txtMaximo.Size = new System.Drawing.Size(188, 20);
-            this.txtMaximo.TabIndex = 5;
+            this.txtMaximo.TabIndex = 3;
             // 
             // txtMinimo
             // 
@@ -111,7 +111,7 @@
             this.txtMinimo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMinimo.Name = "txtMinimo";
             this.txtMinimo.Size = new System.Drawing.Size(188, 20);
-            this.txtMinimo.TabIndex = 6;
+            this.txtMinimo.TabIndex = 2;
             // 
             // label1
             // 
@@ -197,10 +197,10 @@
             // txtID
             // 
             this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(53, 98);
+            this.txtID.Location = new System.Drawing.Point(49, 98);
             this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(105, 20);
+            this.txtID.Size = new System.Drawing.Size(109, 20);
             this.txtID.TabIndex = 11;
             // 
             // btnMostrar
@@ -244,7 +244,7 @@
             this.btnBorrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 27);
-            this.btnBorrar.TabIndex = 18;
+            this.btnBorrar.TabIndex = 5;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
@@ -264,7 +264,7 @@
             this.btnVaciar.Location = new System.Drawing.Point(163, 98);
             this.btnVaciar.Name = "btnVaciar";
             this.btnVaciar.Size = new System.Drawing.Size(75, 20);
-            this.btnVaciar.TabIndex = 20;
+            this.btnVaciar.TabIndex = 6;
             this.btnVaciar.Text = "Vaciar info";
             this.btnVaciar.UseVisualStyleBackColor = true;
             this.btnVaciar.Click += new System.EventHandler(this.btnVaciar_Click);

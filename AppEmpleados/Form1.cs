@@ -45,6 +45,15 @@ namespace AppEmpleados
             btnInsert.BackColor = Color.LightGreen; // Cambia el color de fondo del botón Guardar a verde claro
             btnBorrar.BackColor = Color.IndianRed; // Cambia el color de fondo del botón Borrar a rojo indio
 
+            CambiarColorFilasListView();
+
+            // Cambia el tamaño de la fuente
+            listViewJobs.Font = new Font("Microsoft Sans Serif", 10);
+        }
+        
+        private void CambiarColorFilasListView()
+        {
+
             // Cambia el color de las filas alternas
             for (int i = 0; i < listViewJobs.Items.Count; i++)
             {
@@ -57,8 +66,6 @@ namespace AppEmpleados
                     listViewJobs.Items[i].BackColor = Color.White;
                 }
             }
-            // Cambia el tamaño de la fuente
-            listViewJobs.Font = new Font("Microsoft Sans Serif", 10);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -167,6 +174,9 @@ namespace AppEmpleados
                     InsertJob();
                 else
                     UpdateJob();
+
+                reiniciarInfo();
+                CambiarColorFilasListView();
             }
             catch (SqlException EX)
             {
@@ -334,6 +344,7 @@ namespace AppEmpleados
 
                 RefrescarListView();
                 reiniciarInfo();
+                CambiarColorFilasListView();
             }
             
         }
