@@ -26,10 +26,22 @@ namespace AppEmpleados.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=79.143.90.12,54321;Initial Catalog=DenisMattoEmployees;User ID=sa;Password=123456789")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=79.143.90.12,54321;Initial Catalog=DenisMattoEmployees;User ID=sa; Pa" +
+            "ssword = 123456789;")]
         public string DenisMattoEmployeesConnectionString {
             get {
                 return ((string)(this["DenisMattoEmployeesConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=79.143.90.12,54321;Initial Catalog=DenisMattoEmployees;Persist Securi" +
+            "ty Info=True;User ID=sa;Password=123456789")]
+        public string DenisMattoEmployeesConnectionString1 {
+            get {
+                return ((string)(this["DenisMattoEmployeesConnectionString1"]));
             }
         }
     }

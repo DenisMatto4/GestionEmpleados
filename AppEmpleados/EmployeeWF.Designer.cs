@@ -43,7 +43,6 @@
             this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeesTableAdapter = new AppEmpleados.dtEmployeesTableAdapters.employeesTableAdapter();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
-            this.fKemployeesmanag3E52440BBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +53,8 @@
             this.salaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fKemployeesmanag3E52440BBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.listBoxEmployees = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
@@ -136,6 +137,7 @@
             this.btnLimpiar.TabIndex = 10;
             this.btnLimpiar.Text = "Limpiar filtro";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // label3
             // 
@@ -183,13 +185,8 @@
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowHeadersWidth = 51;
             this.dataGridViewEmployees.RowTemplate.Height = 24;
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(1438, 336);
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(1438, 142);
             this.dataGridViewEmployees.TabIndex = 14;
-            // 
-            // fKemployeesmanag3E52440BBindingSource
-            // 
-            this.fKemployeesmanag3E52440BBindingSource.DataMember = "FK__employees__manag__3E52440B";
-            this.fKemployeesmanag3E52440BBindingSource.DataSource = this.employeesBindingSource;
             // 
             // employeeidDataGridViewTextBoxColumn
             // 
@@ -281,11 +278,26 @@
             this.departmentidDataGridViewTextBoxColumn.ReadOnly = true;
             this.departmentidDataGridViewTextBoxColumn.Width = 125;
             // 
+            // fKemployeesmanag3E52440BBindingSource
+            // 
+            this.fKemployeesmanag3E52440BBindingSource.DataMember = "FK__employees__manag__3E52440B";
+            this.fKemployeesmanag3E52440BBindingSource.DataSource = this.employeesBindingSource;
+            // 
+            // listBoxEmployees
+            // 
+            this.listBoxEmployees.FormattingEnabled = true;
+            this.listBoxEmployees.ItemHeight = 16;
+            this.listBoxEmployees.Location = new System.Drawing.Point(70, 391);
+            this.listBoxEmployees.Name = "listBoxEmployees";
+            this.listBoxEmployees.Size = new System.Drawing.Size(787, 84);
+            this.listBoxEmployees.TabIndex = 15;
+            // 
             // EmployeeWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1678, 506);
+            this.Controls.Add(this.listBoxEmployees);
             this.Controls.Add(this.dataGridViewEmployees);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnLimpiar);
@@ -335,5 +347,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn manageridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentidDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource fKemployeesmanag3E52440BBindingSource;
+        private System.Windows.Forms.ListBox listBoxEmployees;
     }
 }
