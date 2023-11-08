@@ -54,7 +54,7 @@ namespace AppEmpleados
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            FiltrarPorNombre(txtNombre.Text);
+            FiltrarPorNombre(txtNombre.Text, txtApellidos.Text, comboBoxCiudad.SelectedValue == null ? (int)comboBoxCiudad.SelectedValue : 0);
         }
 
         private void txtApellidos_TextChanged(object sender, EventArgs e)
@@ -82,7 +82,6 @@ namespace AppEmpleados
 
             // Tu consulta LINQ
             ClaseEmployeesDataContext dc = new ClaseEmployeesDataContext();
-
             var data = from employees in dc.employees
                        join d in dc.departments
                        on employees.department_id equals d.department_id
@@ -92,7 +91,7 @@ namespace AppEmpleados
                        select new { employees.employee_id, employees.first_name, employees.last_name, l.city };
 
         }
-        private void FiltrarPorNombre(string nombre)
+        private void FiltrarPorNombre(string nombre,string apellidos,int location_id)
         {
             ClaseEmployeesDataContext dc = new ClaseEmployeesDataContext();
             var data = from employees in dc.employees
@@ -100,8 +99,16 @@ namespace AppEmpleados
                        on employees.department_id equals d.department_id
                        join l in dc.locations
                        on d.location_id equals l.location_id
-                       where employees.first_name.ToLower().Contains(nombre)
-                       select new { employees.employee_id, employees.first_name, employees.last_name, l.city };
+                       select new { employees.employee_id, employees.first_name, employees.last_name, l.city ,l.location_id};
+
+            if(!string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellidos) && location_id > 0)
+                data = data.Where(employees => employees.first_name.Contains(nombre) && employees.last_name.Contains(apellidos) && employees.location_id == location_id);
+            else if(!string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellidos))
+                data = data.Where(employees => employees.first_name.Contains(nombre) && employees.last_name.Contains(apellidos));
+            else
+                data = data.Where(employees => employees.first_name.Contains(nombre));
+
+
 
             dataGridViewEmployees.DataSource = data.ToList();
         }
