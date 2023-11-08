@@ -30,7 +30,10 @@ namespace AppEmpleados
             this.locationsTableAdapter.Fill(this.dtLocations.locations);
             // TODO: esta línea de código carga datos en la tabla 'dtEmployees.employees' Puede moverla o quitarla según sea necesario.
             this.employeesTableAdapter.Fill(this.dtEmployees.employees);
+
             MejorasInterfaz();
+
+            comboBoxCiudad.SelectedIndex = -1;
         }
 
         private void MejorasInterfaz()
@@ -45,30 +48,9 @@ namespace AppEmpleados
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            ClaseEmployeesDataContext dc = new ClaseEmployeesDataContext();
-            var data = from employees in dc.employees
-                       join j in dc.jobs
-                       on employees.job_id equals j.job_id
-                       //where employees.employee_id == 103
-                       select new { employees.first_name,employees.last_name,j.job_title};
-            //string nombre = data.FirstOrDefault();
+            this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = "";
+            dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
 
-            var data2 = from employees in dc.employees
-                        select employees;
-
-            foreach (var employee in data)
-            {
-                listBoxEmployees.Items.Add($"Nombre: {employee.first_name}, Apellido: {employee.last_name}, " +
-                    $"Trabajo : {employee.job_title}");
-            }
-
-            var dataBis = from employees in dc.employees
-                          where employees.employee_id == 103
-                        select employees;
-            employees empleado = dataBis.FirstOrDefault();
-            empleado.salary = 100;
-            empleado.first_name = "Denis";
-            dc.SubmitChanges();
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
@@ -78,39 +60,129 @@ namespace AppEmpleados
 
         private void txtApellidos_TextChanged(object sender, EventArgs e)
         {
-            RowFilterString("last_name", txtApellidos.Text);            
+            RowFilterApellido("last_name", txtApellidos.Text);            
         }
 
         private void comboBoxCiudad_SelectedValueChanged(object sender, EventArgs e)
         {
-            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)sender;
+            //System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)sender;
 
-            if(comboBox != null)
-                if (comboBox.Items.Count > 0)
-                    if(comboBox.SelectedValue != null)
-                    {
-                        int idLocationSelected = Convert.ToInt32(comboBox.SelectedValue.ToString());
-                        RowFilterInt("location_id", idLocationSelected);
-                    }
+            //if(comboBox != null)
+            //    if (comboBox.Items.Count > 0)
+            //        if(comboBox.SelectedValue != null)
+            //        {
+            //            int idLocationSelected = Convert.ToInt32(comboBox.SelectedValue.ToString());
+            //            RowFilterInt("location_id", idLocationSelected);
+            //        }
 
-            MejorasInterfaz();
+            //MejorasInterfaz();
         }
 
         private void RowFilterString(string nombreCampo, string textoFiltrar)
         {
-            this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"{nombreCampo} LIKE '{textoFiltrar}%'";
+            //this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"{nombreCampo} LIKE '{textoFiltrar}%'";
+            //dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
+
+            if (!string.IsNullOrEmpty(textoFiltrar))
+            {
+                this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"{nombreCampo} LIKE '{textoFiltrar}%'";
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(txtApellidos.Text))
+                {
+                    if (comboBoxCiudad.SelectedValue != null)
+                        this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"last_name LIKE '{txtApellidos.Text}%' AND location_id = {comboBoxCiudad.SelectedValue}";
+                    else
+                        this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"last_name LIKE '{txtApellidos.Text}%'";
+
+
+                }
+                else if (comboBoxCiudad.SelectedValue != null)
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"location_id = {comboBoxCiudad.SelectedValue}";
+                else
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = "";
+
+
+            }
+
             dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
+
+        }
+
+        private void RowFilterApellido(string nombreCampo, string textoFiltrar)
+        {
+            if (!string.IsNullOrEmpty(textoFiltrar))
+            {
+                if (!string.IsNullOrEmpty(txtNombre.Text))
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter += $" AND {nombreCampo} LIKE '{textoFiltrar}%'";
+                else if(comboBoxCiudad.SelectedValue != null)
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter += $" AND {nombreCampo} LIKE '{textoFiltrar}%' AND location_id = {comboBoxCiudad.SelectedValue}";
+
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(txtNombre.Text))
+                {
+                    if(comboBoxCiudad.SelectedValue != null)
+                        this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"first_name LIKE '{txtNombre.Text}%' AND location_id = {comboBoxCiudad.SelectedValue}";
+                    else
+                        this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"first_name LIKE '{txtNombre.Text}%'";
+
+
+                }else if(comboBoxCiudad.SelectedValue != null)
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"location_id = {comboBoxCiudad.SelectedValue}";
+                else
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = "";
+
+            }
+
+            dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
+
         }
 
         private void RowFilterInt(string nombreCampo, int idFiltro)
         {
-            this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"{nombreCampo} = {idFiltro}";
+            if(idFiltro > 0)
+            {
+                if(string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtApellidos.Text))
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"{nombreCampo} = {idFiltro}";
+                else
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter += $" AND {nombreCampo} = {idFiltro}";
+
+            }
+            else
+            {
+                if(!string.IsNullOrEmpty(txtNombre.Text))
+                    if(!string.IsNullOrEmpty(txtApellidos.Text))
+                        this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"first_name LIKE '{txtNombre.Text}%' AND last_name LIKE '{txtApellidos.Text}%'";
+                    else
+                        this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"first_name LIKE '{txtNombre.Text}%'";
+                else if(!string.IsNullOrEmpty(txtApellidos.Text))
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"last_name LIKE '{txtApellidos.Text}%'";
+                else
+                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = "";
+
+            }
+
+
             dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
         }
 
-        private void btnFiltrar_Click(object sender, EventArgs e)
+        private void comboBoxCiudad_Validated(object sender, EventArgs e)
         {
+            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)sender;
 
+            if (comboBox != null)
+                if (comboBox.Items.Count > 0)
+                    if (comboBox.SelectedValue != null)
+                    {
+                        int idLocationSelected = Convert.ToInt32(comboBox.SelectedValue.ToString());
+                        RowFilterInt("location_id", idLocationSelected);
+                    }else
+                        RowFilterInt("location_id", 0);
+
+            MejorasInterfaz();
         }
     }
 }

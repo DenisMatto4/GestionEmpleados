@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,13 +40,6 @@ namespace AppEmpleados
 
             dataGridViewEmployees.DataSource = data.ToList();
 
-            //var dataBis = from employees in dc.employees
-            //              where employees.employee_id == 103
-            //            select employees;
-            //employees empleado = dataBis.FirstOrDefault();
-            //empleado.salary = 100;
-            //empleado.first_name = "Denis";
-            //dc.SubmitChanges();
         }
 
         private void MejorasInterfaz()
@@ -83,6 +77,21 @@ namespace AppEmpleados
             MejorasInterfaz();
         }
 
+        private void Filtro(string nombre,string apellidos, int locationId)
+        {
+
+            // Tu consulta LINQ
+            ClaseEmployeesDataContext dc = new ClaseEmployeesDataContext();
+
+            var data = from employees in dc.employees
+                       join d in dc.departments
+                       on employees.department_id equals d.department_id
+                       join l in dc.locations
+                       on d.location_id equals l.location_id
+                       where employees.first_name.ToLower().Contains(nombre)
+                       select new { employees.employee_id, employees.first_name, employees.last_name, l.city };
+
+        }
         private void FiltrarPorNombre(string nombre)
         {
             ClaseEmployeesDataContext dc = new ClaseEmployeesDataContext();

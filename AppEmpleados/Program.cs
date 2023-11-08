@@ -16,7 +16,7 @@ namespace AppEmpleados
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EmployeeWFLinq());
+            Application.Run(new EmployeeWF());
         }
     }
 }

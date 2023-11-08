@@ -42,14 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtEmployees = new AppEmpleados.dtEmployees();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
-            this.employeesLocationViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtEmployeesLocation = new AppEmpleados.dtEmployeesLocation();
-            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dtEmployeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.listBoxEmployees = new System.Windows.Forms.ListBox();
-            this.employeesTableAdapter = new AppEmpleados.dtEmployeesTableAdapters.employeesTableAdapter();
-            this.locationsTableAdapter = new AppEmpleados.dtLocationsTableAdapters.locationsTableAdapter();
-            this.employeesLocationViewTableAdapter = new AppEmpleados.dtEmployeesLocationTableAdapters.EmployeesLocationViewTableAdapter();
             this.employeeidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +54,14 @@
             this.departmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.city = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.location_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeesLocationViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtEmployeesLocation = new AppEmpleados.dtEmployeesLocation();
+            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtEmployeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeesTableAdapter = new AppEmpleados.dtEmployeesTableAdapters.employeesTableAdapter();
+            this.locationsTableAdapter = new AppEmpleados.dtLocationsTableAdapters.locationsTableAdapter();
+            this.employeesLocationViewTableAdapter = new AppEmpleados.dtEmployeesLocationTableAdapters.EmployeesLocationViewTableAdapter();
+            this.fKemployeesmanag3E52440BBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.locationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtLocations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployees)).BeginInit();
@@ -70,34 +70,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployeesLocation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployeesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKemployeesmanag3E52440BBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 55);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(11, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 17);
+            this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nombre";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(11, 74);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombre.Location = new System.Drawing.Point(15, 91);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(167, 20);
+            this.txtNombre.Size = new System.Drawing.Size(221, 22);
             this.txtNombre.TabIndex = 2;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(203, 74);
-            this.txtApellidos.Margin = new System.Windows.Forms.Padding(2);
+            this.txtApellidos.Location = new System.Drawing.Point(271, 91);
+            this.txtApellidos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(167, 20);
+            this.txtApellidos.Size = new System.Drawing.Size(221, 22);
             this.txtApellidos.TabIndex = 4;
             this.txtApellidos.TextChanged += new System.EventHandler(this.txtApellidos_TextChanged);
             // 
@@ -105,10 +105,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(200, 55);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(267, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 17);
+            this.label2.Size = new System.Drawing.Size(77, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Apellidos";
             // 
@@ -116,10 +115,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(393, 55);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(524, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 17);
+            this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Ciudad";
             // 
@@ -128,13 +126,14 @@
             this.comboBoxCiudad.DataSource = this.locationsBindingSource;
             this.comboBoxCiudad.DisplayMember = "city";
             this.comboBoxCiudad.FormattingEnabled = true;
-            this.comboBoxCiudad.Location = new System.Drawing.Point(397, 73);
-            this.comboBoxCiudad.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxCiudad.Location = new System.Drawing.Point(529, 90);
+            this.comboBoxCiudad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxCiudad.Name = "comboBoxCiudad";
-            this.comboBoxCiudad.Size = new System.Drawing.Size(167, 21);
+            this.comboBoxCiudad.Size = new System.Drawing.Size(221, 24);
             this.comboBoxCiudad.TabIndex = 7;
             this.comboBoxCiudad.ValueMember = "location_id";
             this.comboBoxCiudad.SelectedValueChanged += new System.EventHandler(this.comboBoxCiudad_SelectedValueChanged);
+            this.comboBoxCiudad.Validated += new System.EventHandler(this.comboBoxCiudad_Validated);
             // 
             // locationsBindingSource
             // 
@@ -150,33 +149,30 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(7, 24);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(9, 30);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 17);
+            this.label5.Size = new System.Drawing.Size(126, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "Filtrar los datos";
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(586, 73);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimpiar.Location = new System.Drawing.Point(789, 90);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(72, 26);
+            this.btnLimpiar.Size = new System.Drawing.Size(96, 24);
             this.btnLimpiar.TabIndex = 10;
             this.btnLimpiar.Text = "Limpiar filtro";
             this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Visible = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 116);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(11, 143);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(131, 17);
+            this.label3.Size = new System.Drawing.Size(155, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Lista de empleados";
             // 
@@ -205,56 +201,14 @@
             this.city,
             this.location_id});
             this.dataGridViewEmployees.DataSource = this.employeesLocationViewBindingSource;
-            this.dataGridViewEmployees.Location = new System.Drawing.Point(11, 135);
-            this.dataGridViewEmployees.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewEmployees.Location = new System.Drawing.Point(15, 166);
+            this.dataGridViewEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowHeadersWidth = 51;
             this.dataGridViewEmployees.RowTemplate.Height = 24;
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(833, 265);
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(1111, 326);
             this.dataGridViewEmployees.TabIndex = 14;
-            // 
-            // employeesLocationViewBindingSource
-            // 
-            this.employeesLocationViewBindingSource.DataMember = "EmployeesLocationView";
-            this.employeesLocationViewBindingSource.DataSource = this.dtEmployeesLocation;
-            // 
-            // dtEmployeesLocation
-            // 
-            this.dtEmployeesLocation.DataSetName = "dtEmployeesLocation";
-            this.dtEmployeesLocation.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataMember = "employees";
-            this.employeesBindingSource.DataSource = this.dtEmployeesBindingSource;
-            // 
-            // dtEmployeesBindingSource
-            // 
-            this.dtEmployeesBindingSource.DataSource = this.dtEmployees;
-            this.dtEmployeesBindingSource.Position = 0;
-            // 
-            // listBoxEmployees
-            // 
-            this.listBoxEmployees.FormattingEnabled = true;
-            this.listBoxEmployees.Location = new System.Drawing.Point(562, 11);
-            this.listBoxEmployees.Margin = new System.Windows.Forms.Padding(2);
-            this.listBoxEmployees.Name = "listBoxEmployees";
-            this.listBoxEmployees.Size = new System.Drawing.Size(68, 43);
-            this.listBoxEmployees.TabIndex = 15;
-            this.listBoxEmployees.Visible = false;
-            // 
-            // employeesTableAdapter
-            // 
-            this.employeesTableAdapter.ClearBeforeFill = true;
-            // 
-            // locationsTableAdapter
-            // 
-            this.locationsTableAdapter.ClearBeforeFill = true;
-            // 
-            // employeesLocationViewTableAdapter
-            // 
-            this.employeesLocationViewTableAdapter.ClearBeforeFill = true;
             // 
             // employeeidDataGridViewTextBoxColumn
             // 
@@ -264,7 +218,7 @@
             this.employeeidDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.employeeidDataGridViewTextBoxColumn.Name = "employeeidDataGridViewTextBoxColumn";
             this.employeeidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.employeeidDataGridViewTextBoxColumn.Width = 91;
+            this.employeeidDataGridViewTextBoxColumn.Width = 115;
             // 
             // firstnameDataGridViewTextBoxColumn
             // 
@@ -274,7 +228,7 @@
             this.firstnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
             this.firstnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.firstnameDataGridViewTextBoxColumn.Width = 80;
+            this.firstnameDataGridViewTextBoxColumn.Width = 97;
             // 
             // lastnameDataGridViewTextBoxColumn
             // 
@@ -284,7 +238,7 @@
             this.lastnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
             this.lastnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastnameDataGridViewTextBoxColumn.Width = 80;
+            this.lastnameDataGridViewTextBoxColumn.Width = 98;
             // 
             // emailDataGridViewTextBoxColumn
             // 
@@ -294,7 +248,7 @@
             this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            this.emailDataGridViewTextBoxColumn.Width = 56;
+            this.emailDataGridViewTextBoxColumn.Width = 69;
             // 
             // phonenumberDataGridViewTextBoxColumn
             // 
@@ -304,7 +258,7 @@
             this.phonenumberDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
             this.phonenumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.phonenumberDataGridViewTextBoxColumn.Width = 103;
+            this.phonenumberDataGridViewTextBoxColumn.Width = 126;
             // 
             // hiredateDataGridViewTextBoxColumn
             // 
@@ -314,7 +268,7 @@
             this.hiredateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.hiredateDataGridViewTextBoxColumn.Name = "hiredateDataGridViewTextBoxColumn";
             this.hiredateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.hiredateDataGridViewTextBoxColumn.Width = 76;
+            this.hiredateDataGridViewTextBoxColumn.Width = 92;
             // 
             // jobidDataGridViewTextBoxColumn
             // 
@@ -325,7 +279,7 @@
             this.jobidDataGridViewTextBoxColumn.Name = "jobidDataGridViewTextBoxColumn";
             this.jobidDataGridViewTextBoxColumn.ReadOnly = true;
             this.jobidDataGridViewTextBoxColumn.Visible = false;
-            this.jobidDataGridViewTextBoxColumn.Width = 60;
+            this.jobidDataGridViewTextBoxColumn.Width = 125;
             // 
             // salaryDataGridViewTextBoxColumn
             // 
@@ -335,7 +289,7 @@
             this.salaryDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.salaryDataGridViewTextBoxColumn.Name = "salaryDataGridViewTextBoxColumn";
             this.salaryDataGridViewTextBoxColumn.ReadOnly = true;
-            this.salaryDataGridViewTextBoxColumn.Width = 59;
+            this.salaryDataGridViewTextBoxColumn.Width = 73;
             // 
             // manageridDataGridViewTextBoxColumn
             // 
@@ -362,24 +316,63 @@
             this.city.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.city.DataPropertyName = "city";
             this.city.HeaderText = "city";
+            this.city.MinimumWidth = 6;
             this.city.Name = "city";
             this.city.ReadOnly = true;
-            this.city.Width = 48;
+            this.city.Width = 56;
             // 
             // location_id
             // 
             this.location_id.DataPropertyName = "location_id";
             this.location_id.HeaderText = "location_id";
+            this.location_id.MinimumWidth = 6;
             this.location_id.Name = "location_id";
             this.location_id.ReadOnly = true;
             this.location_id.Visible = false;
+            this.location_id.Width = 125;
+            // 
+            // employeesLocationViewBindingSource
+            // 
+            this.employeesLocationViewBindingSource.DataMember = "EmployeesLocationView";
+            this.employeesLocationViewBindingSource.DataSource = this.dtEmployeesLocation;
+            // 
+            // dtEmployeesLocation
+            // 
+            this.dtEmployeesLocation.DataSetName = "dtEmployeesLocation";
+            this.dtEmployeesLocation.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeesBindingSource
+            // 
+            this.employeesBindingSource.DataMember = "employees";
+            this.employeesBindingSource.DataSource = this.dtEmployeesBindingSource;
+            // 
+            // dtEmployeesBindingSource
+            // 
+            this.dtEmployeesBindingSource.DataSource = this.dtEmployees;
+            this.dtEmployeesBindingSource.Position = 0;
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
+            // 
+            // locationsTableAdapter
+            // 
+            this.locationsTableAdapter.ClearBeforeFill = true;
+            // 
+            // employeesLocationViewTableAdapter
+            // 
+            this.employeesLocationViewTableAdapter.ClearBeforeFill = true;
+            // 
+            // fKemployeesmanag3E52440BBindingSource
+            // 
+            this.fKemployeesmanag3E52440BBindingSource.DataMember = "FK__employees__manag__3E52440B";
+            this.fKemployeesmanag3E52440BBindingSource.DataSource = this.employeesBindingSource;
             // 
             // EmployeeWF
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 411);
-            this.Controls.Add(this.listBoxEmployees);
+            this.ClientSize = new System.Drawing.Size(1137, 506);
             this.Controls.Add(this.dataGridViewEmployees);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnLimpiar);
@@ -390,7 +383,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EmployeeWF";
             this.Text = "EmployeeWF";
             this.Load += new System.EventHandler(this.EmployeeWF_Load);
@@ -402,6 +395,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployeesLocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEmployeesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKemployeesmanag3E52440BBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,7 +413,6 @@
         private System.Windows.Forms.Label label3;
         private dtEmployees dtEmployees;
         private System.Windows.Forms.DataGridView dataGridViewEmployees;
-        private System.Windows.Forms.ListBox listBoxEmployees;
         private System.Windows.Forms.BindingSource dtEmployeesBindingSource;
         private System.Windows.Forms.BindingSource employeesBindingSource;
         private dtEmployeesTableAdapters.employeesTableAdapter employeesTableAdapter;
@@ -441,5 +434,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn city;
         private System.Windows.Forms.DataGridViewTextBoxColumn location_id;
+        private System.Windows.Forms.BindingSource fKemployeesmanag3E52440BBindingSource;
     }
 }
