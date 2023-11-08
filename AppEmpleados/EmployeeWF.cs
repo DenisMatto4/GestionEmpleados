@@ -55,7 +55,7 @@ namespace AppEmpleados
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            RowFilterString("first_name", txtNombre.Text);
+            RowFilterNombre("first_name", txtNombre.Text);
         }
 
         private void txtApellidos_TextChanged(object sender, EventArgs e)
@@ -78,6 +78,40 @@ namespace AppEmpleados
             //MejorasInterfaz();
         }
 
+        private void RowFilterNombre(string nombreCampo, string textoFiltrar)
+        {
+            string filter = "";
+
+            if (!string.IsNullOrEmpty(this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter))
+            {
+                if (!string.IsNullOrEmpty(textoFiltrar))
+                {
+                    filter = this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter;
+                    filter += $"AND {nombreCampo} LIKE '{textoFiltrar}%'";
+                }
+                else if (!string.IsNullOrEmpty(txtApellidos.Text))
+                {
+                    filter = $"last_name LIKE '{txtApellidos.Text}%'";
+                    if (comboBoxCiudad.SelectedValue != null)
+                        filter += $" AND location_id = {comboBoxCiudad.SelectedValue}";
+                }
+                else if (comboBoxCiudad.SelectedValue != null)
+                {
+                    filter = $"location_id = {comboBoxCiudad.SelectedValue}";
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(textoFiltrar))
+                {
+                    filter = $"{nombreCampo} LIKE '{textoFiltrar}%'";
+                }
+            }
+
+
+            this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = filter;
+            dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
+        }
         private void RowFilterString(string nombreCampo, string textoFiltrar)
         {
             //this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"{nombreCampo} LIKE '{textoFiltrar}%'";
@@ -112,31 +146,29 @@ namespace AppEmpleados
 
         private void RowFilterApellido(string nombreCampo, string textoFiltrar)
         {
+            string filter = "";
+
             if (!string.IsNullOrEmpty(textoFiltrar))
             {
-                if (!string.IsNullOrEmpty(txtNombre.Text))
-                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter += $" AND {nombreCampo} LIKE '{textoFiltrar}%'";
-                else if(comboBoxCiudad.SelectedValue != null)
-                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter += $" AND {nombreCampo} LIKE '{textoFiltrar}%' AND location_id = {comboBoxCiudad.SelectedValue}";
+                filter += $"{nombreCampo} LIKE '{textoFiltrar}%'";
 
+                if(!string.IsNullOrEmpty(txtNombre.Text))
+                    filter += $"first_name LIKE '{txtNombre.Text}%'";
+                if (comboBoxCiudad.SelectedValue != null)
+                    filter += $" AND location_id = {comboBoxCiudad.SelectedValue}";
             }
-            else
+            else if (!string.IsNullOrEmpty(txtNombre.Text))
             {
-                if (!string.IsNullOrEmpty(txtNombre.Text))
-                {
-                    if(comboBoxCiudad.SelectedValue != null)
-                        this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"first_name LIKE '{txtNombre.Text}%' AND location_id = {comboBoxCiudad.SelectedValue}";
-                    else
-                        this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"first_name LIKE '{txtNombre.Text}%'";
-
-
-                }else if(comboBoxCiudad.SelectedValue != null)
-                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"location_id = {comboBoxCiudad.SelectedValue}";
-                else
-                    this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = "";
-
+                filter = $"first_name LIKE '{txtNombre.Text}%'";
+                if (comboBoxCiudad.SelectedValue != null)
+                    filter += $" AND location_id = {comboBoxCiudad.SelectedValue}";
+            }
+            else if (comboBoxCiudad.SelectedValue != null)
+            {
+                filter = $"location_id = {comboBoxCiudad.SelectedValue}";
             }
 
+            this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = filter;
             dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
 
         }
