@@ -73,6 +73,12 @@
       <DependentUpon>dtLocations.xsd</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeWFLinq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeWFLinq.Designer.cs">
+      <DependentUpon>EmployeeWFLinq.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <Compile Include="OperacionBDD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EmployeeWFLinq.resx">
+      <DependentUpon>EmployeeWFLinq.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeWF.resx">
       <DependentUpon>EmployeeWF.cs</DependentUpon>
     </EmbeddedResource>
