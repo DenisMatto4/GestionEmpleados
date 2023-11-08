@@ -24,10 +24,22 @@ namespace AppEmpleados
 
         private void EmployeeWF_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dtEmployeesLocation.EmployeesLocationView' Puede moverla o quitarla según sea necesario.
+            this.employeesLocationViewTableAdapter.Fill(this.dtEmployeesLocation.EmployeesLocationView);
             // TODO: esta línea de código carga datos en la tabla 'dtLocations.locations' Puede moverla o quitarla según sea necesario.
             this.locationsTableAdapter.Fill(this.dtLocations.locations);
             // TODO: esta línea de código carga datos en la tabla 'dtEmployees.employees' Puede moverla o quitarla según sea necesario.
             this.employeesTableAdapter.Fill(this.dtEmployees.employees);
+            MejorasInterfaz();
+        }
+
+        private void MejorasInterfaz()
+        {
+            // Establece la paleta de colores
+            this.BackColor = Color.LightGray; // Cambia el color de fondo a gris claro
+
+            DataGridViewRow row = this.dataGridViewEmployees.RowTemplate;
+            row.DefaultCellStyle.BackColor = Color.Bisque;
 
         }
 
@@ -61,14 +73,44 @@ namespace AppEmpleados
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            this.dtEmployees.employees.DefaultView.RowFilter = $"first_name LIKE '{txtNombre.Text}%'";
-            dataGridViewEmployees.DataSource = this.dtEmployees.employees;
+            RowFilterString("first_name", txtNombre.Text);
         }
 
         private void txtApellidos_TextChanged(object sender, EventArgs e)
         {
-            this.dtEmployees.employees.DefaultView.RowFilter = $"last_name LIKE '{txtApellidos.Text}%'";
-            dataGridViewEmployees.DataSource = this.dtEmployees.employees;
+            RowFilterString("last_name", txtApellidos.Text);            
+        }
+
+        private void comboBoxCiudad_SelectedValueChanged(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)sender;
+
+            if(comboBox != null)
+                if (comboBox.Items.Count > 0)
+                    if(comboBox.SelectedValue != null)
+                    {
+                        int idLocationSelected = Convert.ToInt32(comboBox.SelectedValue.ToString());
+                        RowFilterInt("location_id", idLocationSelected);
+                    }
+
+            MejorasInterfaz();
+        }
+
+        private void RowFilterString(string nombreCampo, string textoFiltrar)
+        {
+            this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"{nombreCampo} LIKE '{textoFiltrar}%'";
+            dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
+        }
+
+        private void RowFilterInt(string nombreCampo, int idFiltro)
+        {
+            this.dtEmployeesLocation.EmployeesLocationView.DefaultView.RowFilter = $"{nombreCampo} = {idFiltro}";
+            dataGridViewEmployees.DataSource = this.dtEmployeesLocation.EmployeesLocationView;
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

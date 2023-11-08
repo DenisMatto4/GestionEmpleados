@@ -57,6 +57,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtEmployees.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dtEmployeesLocation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtEmployeesLocation.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dtJobs.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,6 +122,17 @@
     </None>
     <None Include="dtEmployees.xss">
       <DependentUpon>dtEmployees.xsd</DependentUpon>
+    </None>
+    <None Include="dtEmployeesLocation.xsc">
+      <DependentUpon>dtEmployeesLocation.xsd</DependentUpon>
+    </None>
+    <None Include="dtEmployeesLocation.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtEmployeesLocation.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dtEmployeesLocation.xss">
+      <DependentUpon>dtEmployeesLocation.xsd</DependentUpon>
     </None>
     <None Include="dtJobs.xsc">
       <DependentUpon>dtJobs.xsd</DependentUpon>
